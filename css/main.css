@@ -1,0 +1,174 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html { font-size: 62.5%;} /*10px 크기*/
+* {padding: 0; margin: 0; box-sizing: border-box;}
+table {border-collapse: collapse; width: 100%;}
+img {vertical-align: top;}
+h1,h2,h3,h4,h5,h6 {font-size: 100%;}
+ul, ol {list-style: none;}
+a {text-decoration: none; color: #000;}
+em, address {font-style: normal;}
+button {border: 0; background: transparent;}
+fieldset, input, textarea, select {border: 0; vertical-align: middle;} /*1px 차이를 없애 줌*/
+legend, caption {display: none;}
+
+body { word-break: keep-all; line-height: 1.6; font-size: 1.6rem; color: #333; font-family: 'Noto Sans KR', sans-serif;}
+
+#wrap {background: url('../images/main_bg.png'); height: 900px; }
+
+.inner { max-width: calc(100% - 200px); margin: 0 auto; }
+/* 화면줄일때를 위함 */
+@media (max-width:1600px) {
+    .inner {max-width: calc(100% - 160px);}
+}
+@media (max-width:1400px) {
+    .inner {max-width: calc(100% - 140px);}
+}
+@media (max-width:1200px) {
+    .inner {max-width: calc(100% - 120px);}
+}
+@media (max-width:1000px) {
+    .inner {max-width: calc(100% - 100px);}
+}
+@media (max-width:768px) {
+    .inner {max-width: calc(100% - 50px);}
+}
+
+/* header */
+#header {position: fixed; top: 0; left: 0; width: 100%; border-bottom: 1px solid #999; background: rgba(255, 255, 255, 0.8); z-index: 999;}
+#header .inner {height: 73px; display: flex; justify-content: space-between; align-items: center; position: relative;}
+#header h1{position: absolute; left: 50%; transform: translate(-50%); top: 28px;} /* 로고를 중앙에 배치 transform: translate(-50%); */
+
+#header .gnb {display: flex;} /* 1차메뉴 가로 배치 */
+#header .gnb>li {position: relative;} /* 하위 Absolute 기준*/
+#header .gnb>li>a {display: block; font-size: 20px; padding: 10px 20px; border: #000 solid 1px;}
+#header .gnb>li>a::before{content: '';  /* 아래 가로줄을 만들기 위해 html 태그를 사용하지 않고 after 사용 */
+                         background: #000; width: 0; height: 3px;
+                         display: block; /* 일반태그(block요소)처럼 사용하기 위함 */
+                         position: absolute; /*위로 뛰우고*/
+                         left: 50%; transform: translate(-50%); bottom: -10px; /*위치 잡아줌*/
+                         transition: all 0.5s;} /*부드럽게 보여지게 하기 위함*/
+#header .gnb>li:hover>a::before {width: 100%; } /*li에 마우스를 올렸을때 #header .gnb>li>a::after 만든 라인을 보여지게 함*/
+
+#header .gnb > li .depth2 {display: none; width: 500px; position: absolute; left: 0; top: 50px; z-index: 1999;}
+#header .gnb > li .depth2 li {display: inline-block;}
+#header .gnb > li .depth2 li a {display: block; padding: 20px;}
+
+#header .gnb > li:hover .depth2 {display: block;}
+
+#header .ham {width: 24px; height: 24px; background: url(../images/ham.svg) no-repeat center; cursor: pointer; text-indent: -9999px; display: none;}
+
+#header .util {display: flex; gap: 20px;}
+#header .util .btn_search {background: url(../images/search.svg) no-repeat center; width: 24px; height: 24px; 
+    color: transparent; text-indent: -9999px; cursor: pointer;} /* 글짜 크기를 안보이게 하는 방법 color를 투명하게 또는 크기를 0 또는 들여쓰기 */
+
+@media (max-width:1200px) { /* 반응형으로 동작하기 위한 미디어 쿼리 */
+    #header .ham {display: block;}
+    #header .gnb {display: none;}
+    #header .util li:not(:last-child) {display: none;}
+}
+
+#main {padding-top: 73px;}
+#main section {padding: 100px 0;}
+
+#main .btn_more {margin-bottom: 20px;}
+
+#main h2 {font-size: 5rem;}
+#main h2 + p {font-size: 2.4rem; color: #999; padding: 20px 0;} /* h2 + p 플러스는 h2와 p 순서가 맞는 경우만 적용하기 위함 */
+#main .btn_more a {border-bottom: 1px solid #ccc; color: #999; font-weight: 700; }
+
+@media (max-width:1280px){
+    #main section {padding: 80px 0;}
+    #main h2 {font-size: 4rem;}
+    #main h2 + p {font-size: 2rem;}
+}
+@media (max-width:768px){
+    #main section {padding: 60px 0;}
+    #main h2 {font-size: 3rem;}
+    #main h2 + p {font-size: 1.6rem;}
+}
+
+/* section 1 */
+#sec1 {text-align: center; }
+#sec1 h2 { font-family: 'DM Serif Text', serif; font-size: 8rem; font-weight: 400;}
+#sec1 h2 + p {font-size: 2.4rem; color: #999; letter-spacing: -1px; padding: 20px 0;}
+#sec1 img {max-width: 100%;} /* 화면 크기 줄였을 때 같이 작아지게 만듬 */
+
+@media (max-width:1280px){
+    #sec1 h2 {font-size: 6rem;}
+    #sec1 h2 + p {font-size: 2rem;}
+}
+@media (max-width:768px){
+    #sec1 h2 {font-size: 4rem;}
+    #sec1 h2 + p {font-size: 1.6rem;}
+}
+
+
+/*section 2*/
+#sec2 {position: relative; border-top: 1px solid #999; border-bottom: 1px solid #999; }
+#sec2::before { /*html 파일에 정의되지 않은 글자나 모양을 css 바로 넣을때 after or before 사용*/
+                content: ''; /* 넣고싶은 글자 여기는 박스 가운데 라인 넣을거라 비워둠 */
+                display: block; position: absolute; /* 그 라인을 띄워야 하기 때문에 absolute로 지정 */
+                width: 1px; height: 100%; 
+                background: #ccc;  left: 50%; top: 0;
+              }
+#sec2 .inner {display: flex; justify-content: space-between; 
+              align-items: center; 
+              flex-wrap: wrap;/*뷰 크기가 작아지면 다음 라인으로 떨어뜨리기 위해 wrap*/
+            } 
+#sec2 .inner > * {width: calc((100% - 200px) / 2) ;} /*inner 하위의 모든 자식을 선택시 '*' 사용 */
+#sec2 .txt {text-align: center;}
+#sec2 img {max-width: 100%; width: 100%;} /*그림크기가 요소보다 작을때 맥스와 width를 같이 줘야 한다.*/
+
+@media (max-width:1200px) { /* 반응형으로 동작하기 위한 미디어 쿼리 */
+    #sec2 .inner > * {width: 100%;}
+    #sec2::before {display: none;}
+}
+
+/*section 3*/
+#sec3 {text-align: center;}
+#sec3 ul {display: flex; justify-content: space-between; }
+#sec3 ul li { position: relative; width: calc((100% - 90px) / 4) ;}
+#sec3 ul li img{max-width: 100%; width: 100%;}
+#sec3 ul li span { position: absolute; left: 0; top: 0; background: #000; color: #fff; display: inline-block; padding: 10px 20px;}
+#sec3 br {display: none;} /*br을 줄바꿈시키지 않도록 변경*/
+
+
+@media (max-width:1200px) { /* 중단점 1200px 이하*/
+    #sec3 ul li:nth-child(n+3) {display: none;}    /*li 3번째부터 선택*/
+    #sec3 ul li { width: calc((100% - 30px) / 2) ;}
+}
+@media (max-width:768px) { /* 중단점 768px 이하*/
+    #sec3 ul li:not(:first-child) {display: none;}    /*첫번째 li만 빼고*/
+    #sec3 ul li { width: 100%;}
+    #sec3 br {display: block;}
+}
+
+.txt_center {text-align: center;}
+
+/*section 4*/
+#sec4 {border-top: 1px solid #999; border-bottom: 1px solid #999;}
+#sec4 ul {display: flex; }
+#sec4 ul li { width: calc(100% / 4) ;}
+#sec4 ul li img {max-width: 100%;}
+
+
+/* footer */
+#footer {padding: 100px 0;}
+#footer .search {display: flex; justify-content: center;} /* text submit 사이 공백을 없이기 위해 div로 묶고 flex시킴*/
+/*form tag에는 body에 정의된 글꼴/크기이 적용되지 않음*/
+#footer input[type = "text"] { font-family: 'Noto Sans KR', sans-serif; font-size: 1.6rem; border: 1px solid #333; width: 220px; height: 40px; padding: 10px;}
+#footer input[type = "submit"] { font-family: 'Noto Sans KR', sans-serif; font-size: 1.6rem; background: #333; color: #fff; width: 80px; height: 40px;}
+#footer input::placeholder {}
+
+#footer address {display: flex; gap: 20px; justify-content: center; color: #999; padding: 20px 0;}
+#footer p {color: #999; padding-bottom: 50px;}
+#footer .footer_log {position: relative; padding-top: 20px;}
+#footer .footer_log::before  {content: ''; display: block; width: 40px; height: 1px; background: #ccc; position: absolute; left: 50%; top: 0px; transform: translateX(-50%);}
+
+@media (max-width:768px) { 
+    #footer {font-size: 1.4rem;}
+    #footer address {flex-direction: column; gap: 10px;}
+}
+
