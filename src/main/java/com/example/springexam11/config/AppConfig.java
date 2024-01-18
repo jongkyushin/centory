@@ -1,0 +1,7 @@
+package com.example.springexam11.config;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+}
