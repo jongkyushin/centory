@@ -1,16 +1,8 @@
 package com.example.springexam11.config;
-
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
 
 public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     //한글이 깨지지 않도록 설정 - 필터설정
